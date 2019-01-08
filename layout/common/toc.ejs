@@ -1,8 +1,15 @@
+<%# 文章大纲 %>
 <% var profile = theme.customize.profile; %>
 <% var tagCount = site.tags.filter(function(tag) { return tag.length; }).length; %>
-<aside id="profile">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
+<div class="inner profile-inner" id="n-toc">
+    <ul class="post-toc-wrap" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <%- toc(page.content, {
+                class: 'post-toc',
+                list_number: false,
+                style: 'max-height:80vh; overflow-y:scroll;'
+            }) %>
+    </ul>
+    <!-- <div class="base-info profile-block">
             <img id="avatar" src="<%= ( profile.gravatar ? gravatar(profile.gravatar, 128) : url_for(profile.avatar)) %>" />
             <h2 id="name"><%= profile.author %></h2>
             <h3 id="title"><%= profile.author_title %></h3>
@@ -34,9 +41,15 @@
                 </tr>
             </table>
         </div>
-        <% } %>
-    </div>
-    <% if(page.toc !== false) { %>
-        <%- partial('toc', null, {cache: !config.relative_link}) %>
-    <% } %>
-</aside>
+        <% } %> -->
+</div>
+
+<script>
+    let toc = document.getElementById('n-toc');
+    toc._offsetTop = toc.offsetTop - 40;
+    onscroll = function () {
+        if (scrollY > toc._offsetTop) {
+            toc.style.marginTop = (scrollY - toc._offsetTop) + 'px';
+        }else toc.style.marginTop = '40px';
+    }
+</script>

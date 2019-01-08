@@ -1,3 +1,4 @@
+<%# 每个文章的主体部分 %>
 <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %>" itemscope itemprop="blogPost">
     <div class="article-inner">
         <% if (post.banner) { %>
@@ -18,13 +19,13 @@
                             let repertory_address = `${theme.history_control.server_link}/${theme.history_control.user}/${theme.history_control.repertory}`;
                             let file_path = `${theme.history_control.branch}/source/${post.source}`;%>
                             <div class="article-meta-button">
-                                <a href='<%= `${repertory_address}/raw/${file_path}` %>'> Source </a>
+                                <a href='<%= `${repertory_address}/raw/${file_path}` %>'> 查看源文件 </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href='<%= `${repertory_address}/edit/${file_path}` %>'> Edit </a>
+                                <a href='<%= `${repertory_address}/edit/${file_path}` %>'> 编辑 </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href='<%= `${repertory_address}/commits/${file_path}` %>'> History </a>
+                                <a href='<%= `${repertory_address}/commits/${file_path}` %>'> 历史记录 </a>
                             </div>
                         <% } %>
                     </div>
