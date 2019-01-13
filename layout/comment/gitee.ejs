@@ -1,0 +1,19 @@
+<% if (!index && post.comments){ %>
+    <div id="giteementDiv"></div>
+    <link rel="stylesheet" href="https://giteement.oss-cn-beijing.aliyuncs.com/default.css">
+    <script src="https://giteement.oss-cn-beijing.aliyuncs.com/giteement.browser.js"></script>
+    <script>
+        var giteement = new Giteement({
+            id: '<%- post.date.format('YYYYMMDDHHmmss') %>',
+            owner: '<%- theme.plugins.gitee.giteeID %>',
+            repo: '<%- theme.plugins.gitee.repo %>',
+            backcall_uri: '<%- theme.plugins.gitee.redirect_uri %>',
+            oauth_uri: '<%- theme.plugins.gitee.cors_uri %>',
+            oauth: {
+                client_id: '<%- theme.plugins.gitee.ClientID %>',
+                client_secret: '<%- theme.plugins.gitee.ClientSecret %>'
+            },
+        })
+        giteement.render('giteementDiv')
+    </script>
+<% } %>

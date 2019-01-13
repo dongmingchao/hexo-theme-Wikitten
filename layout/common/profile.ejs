@@ -36,7 +36,7 @@
         </div>
         <% } %>
     </div>
-    <% if(page.toc !== false) { %>
+    <% if(page.content) { %>
         <%- partial('toc', null, {cache: !config.relative_link}) %>
     <% } %>
 </aside>
