@@ -1,22 +1,27 @@
 <%# 文章大纲 %>
-<% var profile = theme.customize.profile; %>
-<% var tagCount = site.tags.filter(function(tag) { return tag.length; }).length; %>
 <div class="inner profile-inner" id="n-toc">
     <ul class="post-toc-wrap" for="post-toc-trigger-btn" style="max-height:80vh;">
         <%- toc(page.content, {
                 class: 'post-toc',
                 list_number: false,
-                style: 'max-height:80vh; overflow-y:scroll;'
+                style: 'max-height:80vh;'
             }) %>
     </ul>
 </div>
 
 <script>
     let toc = document.getElementById('n-toc');
-    toc._offsetTop = toc.offsetTop - 40;
+    toc.parentElement.removeChild(toc);
+    let profile = document.getElementById('profile');
+    profile.appendChild(toc);
+    toc._offsetTop = toc.offsetTop - 1;
     onscroll = function () {
         if (scrollY > toc._offsetTop) {
-            toc.style.marginTop = (scrollY - toc._offsetTop) + 'px';
-        }else toc.style.marginTop = '40px';
+            toc.style.position = 'fixed';
+            toc.style.top = '-30px';
+        } else {
+            toc.style.top = '';
+            toc.style.position = '';
+        }
     }
 </script>
