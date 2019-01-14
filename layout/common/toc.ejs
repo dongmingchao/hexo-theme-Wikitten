@@ -19,9 +19,11 @@
         if (scrollY > toc._offsetTop) {
             toc.style.position = 'fixed';
             toc.style.top = '-30px';
+            toc.style.width = profile.scrollWidth - 8 + 'px';
         } else {
             toc.style.top = '';
             toc.style.position = '';
+            toc.style.width = '';
         }
     }
 </script>
